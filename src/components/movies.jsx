@@ -22,7 +22,7 @@ class Movies extends Component {
 
   async componentDidMount() {
     const { data } = await getGenres();
-    const genres = [{ id: "", name: "All Genres" }, ...data];
+    const genres = [{ _id: "", name: "All Genres" }, ...data];
 
     const { data: movies } = await getMovies();
     this.setState({ movies, genres });
@@ -30,10 +30,10 @@ class Movies extends Component {
 
   handleDelete = async (movie) => {
     const originalMovies = this.state.movies;
-    const movies = originalMovies.filter((m) => m.id !== movie.id);
+    const movies = originalMovies.filter((m) => m._id !== movie._id);
     this.setState({ movies });
     try {
-      await deleteMovie(movie.id);
+      await deleteMovie(movie._id);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         toast.error("this movie deleted already.");

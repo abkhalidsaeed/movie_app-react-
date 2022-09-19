@@ -52,9 +52,9 @@ class MovieForm extends Form {
 
   mapToViewModel(movie) {
     return {
-      id: movie.id,
+      _id: movie._id,
       title: movie.title,
-      genreId: movie.genre.id,
+      genreId: movie.genre._id,
       numberInStock: movie.numberInStock,
       dailyRentalRate: movie.dailyRentalRate,
     };

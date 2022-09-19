@@ -13,10 +13,10 @@ export function getMovie(movieId) {
   return http.get(movieUrl(movieId));
 }
 export function saveMovie(movie) {
-  if (movie.id) {
+  if (movie._id) {
     const body = {...movie};
-    delete body.id;
-    http.put(movieUrl(movie.id), body);
+    delete body._id;
+    http.put(movieUrl(movie._id), body);
   }
   return http.post(apiEndpoint,movie);
 }
